@@ -1,0 +1,23 @@
+Match (matchId TEXT PRIMARY KEY, radiantWin INTEGER,
+duration INTEGER, startTime INTEGER,
+towerStatusRadiant INTEGER, towerStatusDire INTEGER,
+barracksStatusRadiant INTEGER, barracksStatusDire INTEGER,
+cluster TEXT, firstBloodTime INTEGER, lobbyType INTEGER,
+humanPlayers INTEGER, leagueid INTEGER, positiveVotes INTEGER,
+negativeVotes INTEGER, gameMode INTEGER, totalHeroDmg INTEGER,
+ totalHeroHealing INTEGER, totalTowerDmg INTEGER, matchSeqNum TEXT)
+
+PlayerStats (matchId TEXT, item0 INTEGER, item1 INTEGER, item2 INTEGER,
+item3 INTEGER, item4 INTEGER, item5 INTEGER,
+kills INTEGER, deaths INTEGER, assists INTEGER, leaverStatus INTEGER, gold INTEGER,
+lastHits INTEGER, denies INTEGER, gpm INTEGER, xpm INTEGER, goldSpent INTEGER,
+heroDmg INTEGER, towerDmg INTEGER, heroHealing INTEGER, lvl INTEGER, accountId TEXT,
+isDire INTEGER, playerSlot INTEGER, heroId INTEGER, hasAdUnit INTEGER, PRIMARY KEY (matchId, playerSlot);
+
+AditionalUnit (matchId TEXT, playerSlot INTEGER, unitname TXT,
+ item0 INTEGER, item1 INTEGER, item2 INTEGER, item3 INTEGER,
+  item4 INTEGER, item5 INTEGER, PRIMARY KEY (matchId, playerSlot, unitname);
+
+AbilityUpgrade (matchId TEXT, playerSlot INTEGER, ability INTEGER, time INTEGER, level INTEGER, PRIMARY KEY (ability, level));
+
+Account (accountId TEXT, accountName TEXT, PRIMARY KEY(accountId));
