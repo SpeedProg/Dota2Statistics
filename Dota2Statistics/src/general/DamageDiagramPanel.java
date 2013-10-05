@@ -29,7 +29,7 @@ public class DamageDiagramPanel extends JPanel {
 			totalDmg = totalDmg.add(ps.heroDamage);
 		}
 		for (PlayerStats ps : md.players) {
-			dmgPercent[ps.player.playerSlot] = (new BigDecimal(ps.heroDamage)).divide(new BigDecimal(totalDmg)).multiply(new BigDecimal("100"));
+			dmgPercent[ps.player.playerSlot] = (new BigDecimal(ps.heroDamage)).divide(new BigDecimal(totalDmg), 20, RoundingMode.HALF_EVEN).multiply(new BigDecimal("100"));
 		}
 	}
  public void paintComponent(Graphics g) {
