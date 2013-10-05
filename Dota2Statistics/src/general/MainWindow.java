@@ -357,8 +357,7 @@ public class MainWindow implements ActionListener {
 				}
 				int row = tableMatchList.rowAtPoint(new Point(e.getX(), e
 						.getY()));
-				final String matchId = (String) tableMatchList.getModel()
-						.getValueAt(row, 7);
+				final String matchId = (String) tableMatchList.getValueAt(row, 7);
 				SwingUtilities.invokeLater(new Runnable() {
 
 					@Override
@@ -737,19 +736,26 @@ public class MainWindow implements ActionListener {
 										kda = Double.POSITIVE_INFINITY;
 									}
 								}
-
+								Hero hero = Hero.getHeroById(hs.heroId);
+								if (hero == null) {
+									System.out.println("Cound not find Hero with ID: "+hs.heroId);
+								}
+								ImageIcon heroIcon = null;
+								if (hero != null) {
+									heroIcon = new ImageIcon(
+											"images\\heroes\\"
+													+ hero.getName().substring(
+																	14)
+													+ "_sb.png");
+								}
+								String heroName = "Unknow ID:"+hs.heroId;
+								if (hero != null) {
+									heroName = hero.getLocalName();
+								}
 								nPlayedHeroesTdm
 										.addRow(new Object[] {
-												new ImageIcon(
-														"images\\heroes\\"
-																+ Hero.getHeroById(
-																		hs.heroId)
-																		.getName()
-																		.substring(
-																				14)
-																+ "_sb.png"),
-												Hero.getHeroById(hs.heroId)
-														.getLocalName(),
+												heroIcon,
+												heroName,
 												hs.games,
 												kd,
 												hs.gpm / hs.games,
@@ -807,9 +813,15 @@ public class MainWindow implements ActionListener {
 						}
 						for (Hero h : Hero.values()) {
 							if (h != null) {
+								String picname = h.getName().substring(14);
+								File outFile = new File("images/heroes/"
+												+ picname + "_sb.png");
+								if (outFile.exists()) {
+									continue;
+								}
 								boolean tryagain = false;
 								do {
-									String picname = h.getName().substring(14);
+									
 									try {
 										website = new URL(
 												"http://media.steampowered.com/apps/dota2/images/heroes/"
@@ -949,6 +961,13 @@ public class MainWindow implements ActionListener {
 		int tSecs = (int) timeDiff;
 		// 15 6
 		Hero h = Hero.getHeroById(playerStatsRs.getInt(2));
+		GameMode gameMode = GameMode.getGameModeFromId(matchStatsRs.getInt(4));
+		String modeNameString = null;
+		if (gameMode == null) {
+			modeNameString = "Unknown Mode ID: "+matchStatsRs.getInt(4);
+		} else {
+			modeNameString = gameMode.toString();
+		}
 		dtm.addRow(new Object[] {
 				new ImageIcon("images\\heroes\\" + h.getName().substring(14)
 						+ "_sb.png"),
@@ -960,7 +979,7 @@ public class MainWindow implements ActionListener {
 				playerStatsRs.getInt(4),
 				playerStatsRs.getInt(5),
 				playerStatsRs.getString(1),
-				GameMode.getGameModeFromId(matchStatsRs.getInt(4)).toString(),
+				modeNameString,
 				playerStatsRs.getString(6) + "/" + playerStatsRs.getString(7)
 						+ "/" + playerStatsRs.getString(8),
 				(playerStatsRs.getInt(15) / (double) matchStatsRs.getInt(6)) * 100,
