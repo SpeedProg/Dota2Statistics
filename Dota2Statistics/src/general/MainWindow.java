@@ -1286,6 +1286,7 @@ public class MainWindow implements ActionListener {
 						}
 					}
 				} else {
+					System.out.println("This Match was allready in database or is in queue to be added!");
 					rs.close();
 					// check if we got only one result
 					// then it is his last match
