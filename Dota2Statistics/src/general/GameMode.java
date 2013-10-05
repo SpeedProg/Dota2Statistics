@@ -14,7 +14,9 @@ public enum GameMode {
 	GREEVILING("Greeviling", 9, GameType.NONE_STAT_GAME),
 	TUTORIAL("Tutorial", 10, GameType.STAT_GAME),
 	MID_ONLY("Mid Only", 11, GameType.STAT_GAME),
-	LEAST_PLAYED("Least Played", 12, GameType.STAT_GAME);
+	LEAST_PLAYED("Least Played", 12, GameType.STAT_GAME),
+	LIMITED_HEROES("Limited Heroes", 13, GameType.NONE_STAT_GAME),
+	COMPENDIUM("Compendium", 14, GameType.STAT_GAME);
 	private final String name;
 	private final int id;
 	private final GameType gameType;
