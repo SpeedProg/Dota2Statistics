@@ -1,4 +1,4 @@
-package general;
+package tk.speedprog.dota2.statistics;
 
 import java.awt.Color;
 import java.awt.Component;

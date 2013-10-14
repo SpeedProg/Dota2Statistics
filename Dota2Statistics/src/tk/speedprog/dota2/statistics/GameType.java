@@ -1,4 +1,4 @@
-package general;
+package tk.speedprog.dota2.statistics;
 
 public enum GameType {
 	ALL_GAMES("All Games", 0), STAT_GAME("Stat Games Only", 1), NONE_STAT_GAME("None Stat Games Only", 2);

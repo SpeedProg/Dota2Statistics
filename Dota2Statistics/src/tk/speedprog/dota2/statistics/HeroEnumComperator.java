@@ -1,4 +1,4 @@
-package general;
+package tk.speedprog.dota2.statistics;
 import java.util.Comparator;
 
 public class HeroEnumComperator implements Comparator<Hero> {

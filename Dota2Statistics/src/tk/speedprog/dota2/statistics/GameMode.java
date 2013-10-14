@@ -1,4 +1,4 @@
-package general;
+package tk.speedprog.dota2.statistics;
 
 public enum GameMode {
 	ALL_GAME_MODES("All Game Modes", -1, GameType.ALL_GAMES),

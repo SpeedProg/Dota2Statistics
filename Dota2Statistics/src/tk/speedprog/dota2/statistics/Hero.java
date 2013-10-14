@@ -1,4 +1,4 @@
-package general;
+package tk.speedprog.dota2.statistics;
 
 public enum Hero {
 	ALL_HEROES(-1, "npc_dota_all_heroes", "All Heroes"), ANTI_MAGE(1,

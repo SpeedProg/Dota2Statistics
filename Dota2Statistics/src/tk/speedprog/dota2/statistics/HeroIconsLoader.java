@@ -1,4 +1,4 @@
-package general;
+package tk.speedprog.dota2.statistics;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;

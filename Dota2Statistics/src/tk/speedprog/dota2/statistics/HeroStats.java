@@ -1,4 +1,4 @@
-package general;
+package tk.speedprog.dota2.statistics;
 
 public class HeroStats {
 	int heroId;
